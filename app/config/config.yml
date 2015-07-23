@@ -91,3 +91,5 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts:   [admin]
         # Your other blocks
+imports:
+    - { resource: @VTEBackendVEGBundle/Resources/config/services.yml}

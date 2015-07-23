@@ -1,4 +1,11 @@
 services:
-#    vte_backend_veg.example:
-#        class: VTE\BackendVEGBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    sonata.admin.user:
+        class: VTE\BackendVEGBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "User" }
+        arguments:
+            - ~
+            - VTE\VEGBundle\Entity\User
+            - ~
+        calls:
+            - [ setTranslationDomain, [VTEBackendVEGBundle]]
