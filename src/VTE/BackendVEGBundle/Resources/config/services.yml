@@ -1,0 +1,4 @@
+services:
+#    vte_backend_veg.example:
+#        class: VTE\BackendVEGBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
