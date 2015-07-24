@@ -21,13 +21,13 @@ class User extends BaseUser
     
     /**
      * @var string
-     * @ORM\Column(name="last_name", type="string", nullable=false)
+     * @ORM\Column(name="last_name", type="string", nullable=true)
      */
     private $last_name;
 
     /**
      * @var string
-     * @ORM\Column(name="first_name", type="string", nullable=false)
+     * @ORM\Column(name="first_name", type="string", nullable=true)
      */
     private $first_name;
     
