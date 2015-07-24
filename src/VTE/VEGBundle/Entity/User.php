@@ -215,37 +215,4 @@ class User extends BaseUser
     {
         return $this->city;
     }
-
-    /**
-     * Add groups
-     *
-     * @param \VTE\VEGBundle\Entity\Group $groups
-     * @return User
-     */
-    public function addGroup(\VTE\VEGBundle\Entity\Group $groups)
-    {
-        $this->groups[] = $groups;
-
-        return $this;
-    }
-
-    /**
-     * Remove groups
-     *
-     * @param \VTE\VEGBundle\Entity\Group $groups
-     */
-    public function removeGroup(\VTE\VEGBundle\Entity\Group $groups)
-    {
-        $this->groups->removeElement($groups);
-    }
-
-    /**
-     * Get groups
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getGroups()
-    {
-        return $this->groups;
-    }
 }
