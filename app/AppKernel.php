@@ -27,6 +27,8 @@ class AppKernel extends Kernel
             
             new Sonata\AdminBundle\SonataAdminBundle(),
           
+            new VTE\BackendVEGBundle\VTEBackendVEGBundle(),
+          
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
