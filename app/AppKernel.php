@@ -30,6 +30,9 @@ class AppKernel extends Kernel
           
             new VTE\BackendVEGBundle\VTEBackendVEGBundle(),
           
+            new FOS\UserBundle\FOSUserBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+          
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

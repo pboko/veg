@@ -65,6 +65,8 @@ doctrine:
         #   2. Uncomment database_path in parameters.yml.dist
         #   3. Uncomment next line:
         #     path:     "%database_path%"
+        types:
+            json: Sonata\Doctrine\Types\JsonType
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
@@ -86,5 +88,40 @@ sonata_block:
         # Enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts:   [admin]
+        sonata.block.service.text: ~
+        sonata.block.service.action: ~
+        sonata.block.service.rss: ~
+        sonata.admin.block.search_result: ~
+        sonata.user.block.menu: ~
 imports:
     - { resource: @VTEBackendVEGBundle/Resources/config/services.yml}
+    
+# FOS User Bundle
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: VTE\VEGBundle\Entity\User
+    group:
+        group_class: VTE\VEGBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager
+    service:
+        user_manager: sonata.user.orm.user_manager    
+
+# SONATA User Bundle
+sonata_user:
+    security_acl: false
+    manager_type: orm
+    class:
+        user: VTE\VEGBundle\Entity\User
+        group: VTE\VEGBundle\Entity\Group
+    impersonating:
+        route: homepage
+    admin:
+        user:
+            class: Sonata\UserBundle\Admin\Entity\UserAdmin
+            controller: SonataAdminBundle:CRUD
+            translation: SonataUserBundle
+        group:
+            class:          Sonata\UserBundle\Admin\Entity\GroupAdmin
+            controller:     SonataAdminBundle:CRUD
+            translation:    SonataUserBundle

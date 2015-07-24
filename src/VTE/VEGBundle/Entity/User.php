@@ -2,6 +2,7 @@
 
 namespace VTE\VEGBundle\Entity;
 
+use Sonata\UserBundle\Entity\BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -9,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
  */
-class User
+class User extends BaseUser
 {
     /**
      * @ORM\Id
@@ -17,6 +18,14 @@ class User
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+    
+    /**
+     * @var
+     *
+     * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
+     * @ORM\JoinTable(name="users_groups")
+     */
+    protected $groups;
     
     /**
      * @var string
@@ -56,6 +65,7 @@ class User
 
     public function __construct()
     {
+      parent::__construct();
     }
 
     /**
@@ -204,5 +214,38 @@ class User
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * Add groups
+     *
+     * @param \VTE\VEGBundle\Entity\Group $groups
+     * @return User
+     */
+    public function addGroup(\VTE\VEGBundle\Entity\Group $groups)
+    {
+        $this->groups[] = $groups;
+
+        return $this;
+    }
+
+    /**
+     * Remove groups
+     *
+     * @param \VTE\VEGBundle\Entity\Group $groups
+     */
+    public function removeGroup(\VTE\VEGBundle\Entity\Group $groups)
+    {
+        $this->groups->removeElement($groups);
+    }
+
+    /**
+     * Get groups
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroups()
+    {
+        return $this->groups;
     }
 }
