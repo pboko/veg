@@ -13,25 +13,18 @@ class UserAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            
-            ->add('username', 'text', array('label' => 'Nom'))
-            ->add('email', 'text', array('label' => 'Email'))
-          
             ->add('last_name', 'text', array('label' => 'Nom'))
             ->add('first_name', 'text', array('label' => 'Prénom'))
             ->add('telephone', 'text', array('label' => 'Téléphone'))
             ->add('address', 'text', array('label' => 'Adresse postale'))
             ->add('zipcode', 'text', array('label' => 'Code postal'))
-            ->add('city', 'text', array('label' => 'Ville'))
-        ;
+            ->add('city', 'text', array('label' => 'Ville'));
     }
 
     // Fields to be shown on filter forms
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('username')
-            ->add('email')
             ->add('last_name')
             ->add('first_name')
             ->add('telephone')
@@ -44,8 +37,6 @@ class UserAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('username')
-            ->add('email')
             ->add('last_name')
             ->add('first_name')
             ->add('telephone')
